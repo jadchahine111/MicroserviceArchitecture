@@ -1,0 +1,45 @@
+services:
+
+
+  ## PostgreSQL Database
+  postgres:
+    image: postgres:latest
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: jadchahine
+      POSTGRES_PASSWORD: jadali123
+      POSTGRES_DB: service1
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - microservices_network
+    restart: unless-stopped
+
+  ## pgAdmin for Database Management
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:latest
+    environment:
+      PGADMIN_DEFAULT_EMAIL: jadalichahine@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: jadali123
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    networks:
+      - microservices_network
+    restart: unless-stopped
+
+
+
+
+networks:
+  microservices_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  pgadmin_data:
