@@ -6,11 +6,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@Builder
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor
+@Data // automatically generates Getters & Setters
+@Builder // creates a static builder() method that allows you to create objects in a chainable way.
+@Entity // marks the class as a database entity for Spring Data JPA
+@AllArgsConstructor // generates a constructor with all fields
+@NoArgsConstructor // generates empty constructor
 public class Service1 {
 
     @Id
